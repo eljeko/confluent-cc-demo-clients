@@ -11,9 +11,13 @@ Let's check our plan
 
     terraform plan
 
+    ./terraform-plan.sh
+
 To run the apply without promopt
 
     terraform apply -var confluent_cloud_api_key=<your-key> -var confluent_cloud_api_secret=<your-secret> -auto-approve 
+
+    ./terraform-apply.sh
 
 Destroy the cluster:
 

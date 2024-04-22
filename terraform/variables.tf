@@ -1,6 +1,6 @@
 locals {
-    env_name = "basic-demo-workshop"
-    cluster_name = "demo-basic-cluster"
+    env_name = "acme-prod"
+    cluster_name = "acme-cluster"
     description = "Resource created for 'Simple Basic Cluster Workshop"
 }
 

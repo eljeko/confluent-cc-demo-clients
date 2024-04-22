@@ -10,11 +10,11 @@ resource "confluent_api_key" "app_manager_kafka_cluster_key" {
         kind = confluent_service_account.app_manager.kind
     }
     managed_resource {
-        id = confluent_kafka_cluster.simple_cluster.id
-        api_version = confluent_kafka_cluster.simple_cluster.api_version
-        kind = confluent_kafka_cluster.simple_cluster.kind
+        id = confluent_kafka_cluster.acme_cluster.id
+        api_version = confluent_kafka_cluster.acme_cluster.api_version
+        kind = confluent_kafka_cluster.acme_cluster.kind
         environment {
-            id = confluent_environment.simple_env.id
+            id = confluent_environment.acme_env.id
         }
     }
     depends_on = [
@@ -35,7 +35,7 @@ resource "confluent_api_key" "sr_cluster_key" {
         api_version = confluent_schema_registry_cluster.simple_sr_cluster.api_version
         kind = confluent_schema_registry_cluster.simple_sr_cluster.kind 
         environment {
-            id = confluent_environment.simple_env.id
+            id = confluent_environment.acme_env.id
         }
     }
     depends_on = [
@@ -52,11 +52,11 @@ resource "confluent_api_key" "clients_kafka_cluster_key" {
         kind = confluent_service_account.clients.kind
     }
     managed_resource {
-        id = confluent_kafka_cluster.simple_cluster.id
-        api_version = confluent_kafka_cluster.simple_cluster.api_version
-        kind = confluent_kafka_cluster.simple_cluster.kind
+        id = confluent_kafka_cluster.acme_cluster.id
+        api_version = confluent_kafka_cluster.acme_cluster.api_version
+        kind = confluent_kafka_cluster.acme_cluster.kind
         environment {
-            id = confluent_environment.simple_env.id
+            id = confluent_environment.acme_env.id
         }
     }
     depends_on = [

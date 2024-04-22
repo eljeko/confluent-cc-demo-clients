@@ -8,7 +8,7 @@ provider "confluent" {
 # -------------------------------------------------------
 # Environment
 # -------------------------------------------------------
-resource "confluent_environment" "simple_env" {
+resource "confluent_environment" "acme_env" {
     display_name = "${local.env_name}-${random_id.id.hex}"
 
     lifecycle {
