@@ -5,7 +5,7 @@ resource "confluent_kafka_cluster" "acme_cluster" {
   display_name = local.cluster_name
   availability = "SINGLE_ZONE"
   cloud        = "AWS"
-  region       = "eu-central-1"
+  region       = "us-east-2" #"eu-central-1"
   basic {}
   environment {
     id = confluent_environment.acme_env.id

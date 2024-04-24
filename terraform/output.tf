@@ -59,6 +59,11 @@ output "build" {
   basic.auth.credentials.source=USER_INFO
   basic.auth.user.info=${confluent_api_key.sr_cluster_key.id}:${nonsensitive(confluent_api_key.sr_cluster_key.secret)}
 
+  Avro Consumer setup:
+
+  export BOOTSTRAP_SERVER="${confluent_kafka_cluster.acme_cluster.bootstrap_endpoint}"
+  export SCHEMA_REGISTRY_URL=${confluent_schema_registry_cluster.simple_sr_cluster.rest_endpoint}
+  export BASIC_AUTH_USER_INFO=${confluent_api_key.sr_cluster_key.id}:${nonsensitive(confluent_api_key.sr_cluster_key.secret)}
 
   EOT
 

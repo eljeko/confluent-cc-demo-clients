@@ -1,0 +1,34 @@
+{
+    "type": "record",
+    "name": "UserInfo",
+    "namespace": "example.kafka",
+    "fields": [{
+        "name": "addressinfo",
+        "type": ["null", {
+            "type": "record",
+            "name": "Addressinfo",
+            "fields": [{
+                "name": "city",
+                "type": ["null", "string"],
+                "default": null
+            }, {
+                "name": "street",
+                "type": ["null", "string"],
+                "default": null
+            }, {
+                "name": "zip",
+                "type": ["null", "string"],
+                "default": null
+            }]
+        }],
+        "default": null
+    }, {
+        "name": "name",
+        "type": ["null", "string"],
+        "default": null
+    }, {
+        "name": "surname",
+        "type": ["null", "string"],
+        "default": null
+    }]
+}
