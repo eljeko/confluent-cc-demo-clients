@@ -1,0 +1,1 @@
+../config_generators/simple.config.generator.sh terraform.tfstate > ../config.properties

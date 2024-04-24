@@ -30,9 +30,11 @@ You can use the provided scripts:
 
 Will be useful fot the test to copy past the output from terraform into a backup file.
 
+run the command `generate_clients_configs.sh` to create `config.properties`
+
 # Simple java application test
 
-Build the two clients in `producer` and `consumer` folder 
+Build the two clients in `producer` and `consumer` folders 
 
 Producer
 
@@ -46,11 +48,36 @@ Copy the output section from terraform to preperly configure the clients `config
 
 Run the producer (fromm the repo root)
         
-    java -jar simple-java/producer/target/java-simple-kafka-producer-1.0-jar-with-dependencies.jar simple-java/producer/config.properties
+    java -jar simple-java/producer/target/java-simple-kafka-producer-1.0-jar-with-dependencies.jar config.properties
 
 Run the consumer (fromm the repo root)
 
-    java -jar simple-java/consumer/target/java-simple-kafka-consumer-1.0-jar-with-dependencies.jar  simple-java/consumer/config.properties
+    java -jar simple-java/consumer/target/java-simple-kafka-consumer-1.0-jar-with-dependencies.jar  config.properties
+    
+
+Show the cloud console *lineage*
+
+# Avro java application test
+
+Build the two clients in `avro-java/avro-producer` and `avro-java/avro-consumer` folders
+
+Producer
+
+    mvn clean package -f avro-java/avro-producer/pom.xml
+
+Consumer
+    
+    mvn clean package -f avro-java/avro-consumer/pom.xml
+
+Copy the output section from terraform to preperly configure the clients `config.properties` (Get the API key, secret and bootstrap server)
+
+Run the producer (fromm the repo root)
+        
+    java -jar avro-java/avro-producer/target/avro-sample-producer-1.0-jar-with-dependencies.jar config.properties avrouser
+
+Run the consumer (fromm the repo root)
+
+    java -jar avro-java/avro-consumer/target/avro-sample-consumer-1.0-jar-with-dependencies.jar config.properties avrouser
     
 
 Show the cloud console *lineage*
