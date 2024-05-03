@@ -44,6 +44,8 @@ run the command `generate_clients_configs.sh` to create `config.properties`
 
 # Simple java application test
 
+Go back to the project root.
+
 Build the two clients in `producer` and `consumer` folders 
 
 Producer
@@ -92,7 +94,24 @@ Run the consumer (fromm the repo root)
 
 Show the cloud console *lineage*
 
-# Flink demo
+# Flink demo (short)
+
+Go to the Flink's pool `SQL workspace` start running queries:
+
+```sql
+SELECT * FROM avrouser
+```
+
+The output is not so clear or useful.
+
+Let's get some info (from the nested json):
+
+```sql
+SELECT name, surname, addressinfo.city FROM avrouser
+```
+
+
+# Flink demo (long)
 
 Generate data: 
 * Create a datagen Avro for click_stream_users  (you can name it ClickStreamUsersGen )
