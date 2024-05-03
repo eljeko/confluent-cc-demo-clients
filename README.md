@@ -104,12 +104,11 @@ SELECT * FROM avrouser
 
 The output is not so clear or useful.
 
-Let's get some info (from the nested json):
+Let's get some info (from the nested json/avro):
 
 ```sql
 SELECT name, surname, addressinfo.city FROM avrouser
 ```
-
 
 # Flink demo (long)
 
@@ -121,13 +120,34 @@ You can use existing client API generated from terraform
 
 ## See avro messages
 
-Copy connect configuratuin a file named local-conf/avroconsumer.properties
+From `terraform` output copy and execute in a shell the last lines:
 
-copy Schema registry info into `consumer-avro.sh`
+```
+export BOOTSTRAP_SERVER="<BOOTSTRAP>"
+export SCHEMA_REGISTRY_URL=https://<SCHEMA_REGISTRY_URL>
+export BASIC_AUTH_USER_INFO=<KEY>:<SECRET>
+```
+
+Then run the command:
 
 `./consume-avro.sh click_stream_users`
 
-# Flink
+On another shell:
+
+```
+export BOOTSTRAP_SERVER="<BOOTSTRAP>"
+export SCHEMA_REGISTRY_URL=https://<SCHEMA_REGISTRY_URL>
+export BASIC_AUTH_USER_INFO=<KEY>:<SECRET>
+```
+The run the command:
+
+`./consume-avro.sh click_stream`
+
+To show the coming messages.
+
+You can paus the click_stream_users connector after a while
+
+## Flink SQL
 
 Go to the Flink's pool `SQL workspace` start running queries:
 
@@ -155,7 +175,7 @@ SELECT * from click_stream_users where city = 'New York'
 ```
 
 ```sql
-SELECT user_id, username, remote_user, agent
+SELECT user_id, username, first_name, last_name, agent
 FROM click_stream
 INNER JOIN click_stream_users
 ON click_stream.userid = click_stream_users.user_id
@@ -205,7 +225,7 @@ copy Schema registry info into `consumer-avro.sh`
 
 Run the script and show the output
 
-`consumer-avro.sh NewYorkClickStream`
+`./consume-avro.sh NewYorkClickStream`
 
 A the end of the process you can show the lineage to inspect the pipelines
 
@@ -213,16 +233,21 @@ A the end of the process you can show the lineage to inspect the pipelines
 
 Click on `click_stream` topic
 
-Create a business metadata
+Create a business metadata (from right menu)
 
     Name: "owner"
     Description: "Data product owner department"
     Attribute: "name"
 
-* Add `owner,name=IT` to `click_stream`
-* Add `owner,name=CRM` to `click_stream_users`
+Go to topic `click_stream`
 
-Got to Data Portal click on `View all` from the Recently created
+* Add `owner,name=IT` to `click_stream` from right menu
+
+Go to topic `click_stream_users`
+
+* Add `owner,name=CRM` to `click_stream_users` from right menu
+
+Got to Data Portal click on `View all` (remember to select your cluster) from the Recently created
 
 Serach appling filter Business meta data:
 
