@@ -7,7 +7,7 @@ Here the steps to setup (and deliver if you need) this demo.
     export CONFLUENT_CLOUD_API_KEY=<KEY>
     export CONFLUENT_CLOUD_API_SECRET=<SECRET>
 
-## Provisioni the environment with Terraform
+## Provisionng the environment with Terraform
 
 go to terraform folder:
 
