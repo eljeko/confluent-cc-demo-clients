@@ -118,7 +118,7 @@ Generate data:
 
 You can use existing client API generated from terraform
 
-## See avro messages
+## See avro messages
 
 From `terraform` output copy and execute in a shell the last lines:
 
