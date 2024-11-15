@@ -11,6 +11,10 @@ provider "confluent" {
 resource "confluent_environment" "acme_env" {
     display_name = "${local.env_name}-${random_id.id.hex}"
 
+ stream_governance {
+    package = "ADVANCED"
+  }
+
     lifecycle {
         prevent_destroy = false
     }

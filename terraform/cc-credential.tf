@@ -31,9 +31,9 @@ resource "confluent_api_key" "sr_cluster_key" {
         kind = confluent_service_account.sr.kind
     }
     managed_resource {
-        id = confluent_schema_registry_cluster.simple_sr_cluster.id
-        api_version = confluent_schema_registry_cluster.simple_sr_cluster.api_version
-        kind = confluent_schema_registry_cluster.simple_sr_cluster.kind 
+        id = data.confluent_schema_registry_cluster.simple_sr_cluster.id
+        api_version = data.confluent_schema_registry_cluster.simple_sr_cluster.api_version
+        kind = data.confluent_schema_registry_cluster.simple_sr_cluster.kind 
         environment {
             id = confluent_environment.acme_env.id
         }

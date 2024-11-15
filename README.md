@@ -36,7 +36,7 @@ You can use the provided scripts:
     ./terraform-destroy.sh
 
 
-Will be useful fot the test to copy past the output from terraform into a backup file (just in case).
+Will be useful for the test to copy paste the output from terraform into a backup file (just in case).
 
 ## Generate client config.properties
 

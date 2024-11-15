@@ -55,15 +55,23 @@ output "build" {
   
   Schema Registry Client Setup:
 
-  schema.registry.url=${confluent_schema_registry_cluster.simple_sr_cluster.rest_endpoint}
+  schema.registry.url=${data.confluent_schema_registry_cluster.simple_sr_cluster.rest_endpoint}
   basic.auth.credentials.source=USER_INFO
   basic.auth.user.info=${confluent_api_key.sr_cluster_key.id}:${nonsensitive(confluent_api_key.sr_cluster_key.secret)}
 
   Avro Consumer setup:
 
   export BOOTSTRAP_SERVER="${confluent_kafka_cluster.acme_cluster.bootstrap_endpoint}"
-  export SCHEMA_REGISTRY_URL=${confluent_schema_registry_cluster.simple_sr_cluster.rest_endpoint}
+  export SCHEMA_REGISTRY_URL=${data.confluent_schema_registry_cluster.simple_sr_cluster.rest_endpoint}
   export BASIC_AUTH_USER_INFO=${confluent_api_key.sr_cluster_key.id}:${nonsensitive(confluent_api_key.sr_cluster_key.secret)}
+
+  Flink shell:
+
+  confluent flink shell --compute-pool ${confluent_flink_compute_pool.main.id} --environment ${confluent_environment.acme_env.id}
+  
+  then in flink shell:
+
+  > use ${local.cluster_name}
 
   EOT
 
